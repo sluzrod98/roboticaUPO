@@ -120,13 +120,13 @@ Este script se encarga de gestionar la planificación del camino óptimo para al
 El algoritmo que utiliza el robot para encontrar el camino que debe seguir. A* es un algoritmo heurístico, es decir, que toma información acerca del propio entorno del problema (permitiéndole ignorar restricciones), que, en base a una función heurística, encuentra ruta más que aceptable hasta la meta.  
 El funcionamiento de A* es bastante simple. En primer lugar, partiendo de un punto, calcula todos los movimientos simples que puede realizar (en el caso del robot, se han tenido en cuenta los 4 ejes cardinales y movimientos diagonales con 45º de inclinación). A cada posible punto, le asocia un coste que será igual al coste acumulado de desplazarse a ese punto (todos los costes que lleva ya más el coste de la función heurística) y así sucesivamente.  
 
-![Alt text](img/A*_formula.svg?raw=true "Estructura Específica") 
+![Alt text](img/A*_formula.svg?raw=true "Fórmula A*") 
 
 Donde *f(x)* es el coste total del movimiento, *g(x)* es el coste acumulado para alcanzar ese punto y *h(x)* es el coste de la función heurística.
 
 Para este problema hemos decidido utilizar como función heurística la distancia euclídea desde el punto al que nos desplazaríamos y el punto objetivo.  
 
-![Alt text](img/Manhattan.svg?raw=true "Estructura Específica") 
+![Alt text](img/Manhattan.svg?raw=true "Distancia de Manhattan") 
 
 Sin embargo, esta técnica por si sola y dados los movimientos del robot, devuelve una ruta, aunque corta, bastante lenta, puesto que solo puede moverse en 2 direcciones (hacia delante y hacia atrás) además de girar sobre su propio eje. Por ello hemos optado por aplicarle un “suavizado” en el momento de transformar la ruta para devolverla al planificador que consiste en que si realiza varios cambios de direcciones muy rápidamente, no los añada al camino, sino que salte ese escalado y vaya directamente del principio al final de la escalera. Además, el robot desacelera cuando se está acercando al punto que debe llegar, así que solo se envían los puntos de inicio y fin de una línea, sin puntos intermedios.  
 
