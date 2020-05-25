@@ -86,11 +86,11 @@ roslaunch challenge challenge3.launch
 ### 3.1. General
 A continuación, se puede observar las conexiones por tópicos que utilizan los nodos Ros lanzados durante la ejecución del programa.
 
-![Alt text](estructura_general.png?raw=true "Estructura General")  
+![Alt text](img/estructura_general.png?raw=true "Estructura General")  
 
 Las relaciones entre los nodos creados para nuestro programa son las mostradas a continuación. 
 
-![Alt text](estructura_especifica.png?raw=true "Estructura Específica") 
+![Alt text](img/estructura_especifica.png?raw=true "Estructura Específica") 
 
 ### 3.2. Nodo Planificador
 
@@ -115,7 +115,9 @@ El funcionamiento de A* es bastante simple. En primer lugar, partiendo de un pun
 ```C=f(nodo)+h(nodo)```  
 Donde C es el coste total del movimiento, f() es el coste acumulado y h() es el coste de la función heurística.
 Para este problema hemos decidido utilizar como función heurística la distancia euclídea desde el punto al que nos desplazaríamos y el punto objetivo.  
-\left(\sum_{i=1}^n |x_i-y_i|^p\right)^{1/p}  
+
+![Alt text](img/Manhattan.svg?raw=true "Estructura Específica") 
+
 Sin embargo, esta técnica por si sola y dados los movimientos del robot, devuelve una ruta, aunque corta, bastante lenta, puesto que solo puede moverse en 2 direcciones (hacia delante y hacia atrás) además de girar sobre su propio eje. Por ello hemos optado por aplicarle un “suavizado” en el momento de transformar la ruta para devolverla al planificador que consiste en que si realiza varios cambios de direcciones muy rápidamente, no los añada al camino, sino que salte ese escalado y vaya directamente del principio al final de la escalera. Además, el robot desacelera cuando se está acercando al punto que debe llegar, así que solo se envían los puntos de inicio y fin de una línea, sin puntos intermedios.  
 
 #### 4.1.3. Node
