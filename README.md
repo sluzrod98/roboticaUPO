@@ -148,5 +148,7 @@ Este script hace las veces de fachada entre el control y el pyorca, adaptando lo
 #### 4.1.7. Halfplaneintersect
 
 ### 4.2. Lanzadores
+En el proyecto existen 3 lanzadores (1 por cada challenge planteado) cuya función es desplegar en ROS cada nodo. Los nodos que componen la solución son [Panner](#32-nodo-planificador), [Control](#33-nodo-control) y [Orca](#34-nodo-orca).
 
 ### 4.3. Ficheros de Configuración
+
