@@ -1,4 +1,9 @@
 # Challenge Robótica
+
+## Realizado por:
+   - Carlos Aunión Domínguez
+   - Sergio Luzuriaga Rodríguez
+
 ## Tabla de Contenidos
 - [1. Introducción](#1introducción)
   * [1.1. Objetivos](#11-objetivos)
