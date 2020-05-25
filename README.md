@@ -10,7 +10,11 @@
   * [2.4. Challenge 4](#24-challenge-4)
   * [2.5. Challenge 5](#25-challenge-5)
 - [3. Estructura]
-- [4. Componentes]
+  * [3.1. General](#31-general)
+  * [3.2. Nodo Planificador](#32-nodo-planificador)
+  * [3.3. Nodo Control](#33-nodo-control)
+  * [3.4. Nodo Orca](#34-nodo-orca)
+- [4. Componentes](#4componentes)
 
 ## 1.	Introducción
 ### 1.1. Objetivos
