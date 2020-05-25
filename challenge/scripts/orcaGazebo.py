@@ -85,13 +85,13 @@ class orca_ros:
 				# Smooth speed
 				data = self.smooth_speed(data)
 				# Raise exception if control node orders to keep advancing but orca orders to go back
-				if(abs(linear_vel[0]) > 0.1 and data.linear.x < -0.05):
+				if(abs(linear_vel[0]) > 0.1 and data.linear.x < -0):
 					# Increase stuck count variable
 					self.stuck_count += 1
 					print("Stuck detection: " + str(self.stuck_count))
 					# When stuck count is higher than 15, the script will assume 
 					# 	the robot is stuck and issue a replanning
-					if self.stuck_count >= 12:
+					if self.stuck_count >= 7:
 						# Reset stuck count varaible
 						self.stuck_count = 0
 						# Publish stuck topic to planner node

@@ -13,6 +13,7 @@ from nav_msgs.msg import OccupancyGrid, Path
 from visualization_msgs.msg import Marker
 from std_msgs.msg import Bool
 from AStar import AStar
+from time import sleep
 
 
 class Planner:
@@ -154,6 +155,9 @@ class Planner:
  
 if __name__ == '__main__':
     try:
+		# sleep 3 sec to let obstacles load properly on the map
+		sleep(3)
+
 		# initiliaze
 		rospy.init_node('planning', anonymous=False)
 

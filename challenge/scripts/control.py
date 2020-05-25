@@ -101,7 +101,7 @@ class Turtlebot():
 		# If alpha is higher than the defined angle threshold
 		if math.fabs(alpha) > self.angle_threshold:
 			# Set threshold to more restricted value while rotating
-			self.angle_threshold = 0.2
+			self.angle_threshold = 0.3
 			# Calculate required angular speed
 			angular = self.angular_parameter * alpha
 			# Stop linear movement
