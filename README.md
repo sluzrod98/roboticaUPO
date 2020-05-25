@@ -156,7 +156,7 @@ Este script se encargará además de asegurar que la velocidad publicada al robo
 #### 4.1.7. Halfplaneintersect
 
 ### 4.2. Lanzadores
-En el proyecto existen 3 lanzadores (1 por cada challenge planteado) cuya función es desplegar en ROS cada nodo. Los nodos que componen la solución son [Panner](#32-nodo-planificador), [Control](#33-nodo-control) y [Orca](#34-nodo-orca).
+En el proyecto existen 3 lanzadores (1 por cada challenge planteado) cuya función es desplegar en ROS cada nodo. Los nodos que componen la solución son [Planner](#32-nodo-planificador), [Control](#33-nodo-control) y [Orca](#34-nodo-orca).
 
 ### 4.3. Ficheros de Configuración
 En los distintos ficheros de configuración se recogen todos los parámetros más importantes para el correcto funcionamiento de las solciones. A continuación se presenta una lista con los parámetros recogidos en cada lista, así como su funcionalidad durante la ejecución:
