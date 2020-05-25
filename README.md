@@ -161,20 +161,20 @@ En el proyecto existen 3 lanzadores (1 por cada challenge planteado) cuya funci�
 ### 4.3. Ficheros de Configuración
 En los distintos ficheros de configuración se recogen todos los parámetros más importantes para el correcto funcionamiento de las solciones. A continuación se presenta una lista con los parámetros recogidos en cada lista, así como su funcionalidad durante la ejecución:
 
- - challengeX
+- challengeX
   * init: Coordenadas del punto de inicio
   * goal: Coordenadas del punto final
   * obstacle:threshold: Límite que se toma al cargar el mapa de coste para entender las regiones como visitables o no. El valor de este parámetro es clave, puesto que si es demasiado alto, podría planificar un camino a través de una pared o si es demasiado bajo, no encontrar solución al problema.
   
  - globalParams
-  * ang_threshold: límite para que el robot rote en lugar de avanzar.
-  * goal_tolerance: Distancia a la que el robot debe considerar que ha alcanzado el punto asignado.
-  * linear_max: Máxima velocidad lineal que puede tomar el robot. Si es demasiado alta puede haber problemas con las referencias de la simulación en m/s.
-  * speed_parameter: Regula la velocidad lineal que calcula el nodo de control.
-  * angular_max: Velocidad de rotación máxima que puede tomar el robot en rad/s.
-  * angular_parameter: Regula la velocidad de giro que calcula el nodo de control.
+   * ang_threshold: límite para que el robot rote en lugar de avanzar.
+   * goal_tolerance: Distancia a la que el robot debe considerar que ha alcanzado el punto asignado.
+   * linear_max: Máxima velocidad lineal que puede tomar el robot. Si es demasiado alta puede haber problemas con las referencias de la simulación en m/s.
+   * speed_parameter: Regula la velocidad lineal que calcula el nodo de control.
+   * angular_max: Velocidad de rotación máxima que puede tomar el robot en rad/s.
+   * angular_parameter: Regula la velocidad de giro que calcula el nodo de control.
   
- - orcaParams
+- orcaParams
   * radius: Radio del robot.
   * sections: Numero de secciones tomadas por el escaner en orca.
   * obstacle_distance: Distancia a la que el robot detecta obstáculos en su campo de visión.
