@@ -143,7 +143,15 @@ Recibe diversos valores del servidor de parámetros que permiten ajustar el func
 #### 4.1.5. Pyorca
 Script que, basándose en el algoritmo *orca 2D* ([Optimal Reciprocal Collision Avoidance](http://gamma.cs.unc.edu/ORCA/)) descrito por J. van der Berg, adapta las velocidad lineal y angular exigidas por el script de control teniendo en cuenta las caracteristicas del robot y las lecturas del laser ya adaptadas desde el script de orcaGazebo, todo ello en forma de *'agentes'*, además de el tiempo estimado de colisión inminente. 
 #### 4.1.6. Orca gazebo
-Este script hace las veces de fachada entre el control y el pyorca, adaptando los datos e interpretando la adaptación calculada por el nodo de pyorca. En primer lugar, transforma la velocidad angular (medida en rad/s) a la velocidad que necesita el algoritmo de pyorca (componente de la velocidad lineal en el eje *y*). Posteriormente transformará a la inversa la velocidad lineal a la angular que recibe el robot. Además, interpreta la salida del orca para decidir si el robot se ha quedado atascado o no siguiendo la suigiente lógica:
+Este script hace las veces de fachada entre el control y el pyorca, adaptando los datos e interpretando la adaptación calculada por el nodo de pyorca. En primer lugar, transforma la velocidad angular (medida en rad/s) a la velocidad que necesita el algoritmo de pyorca (componente de la velocidad lineal en el eje *y*). Posteriormente transformará a la inversa la velocidad lineal a la angular que recibe el robot. 
+
+Para calcular la velocidad final, el script genera una serie de obstáculos a tener en cuenta según los datos recibidos por el escáner de distancia del robot en el tópico `/scan`. Estas lecturas se separan en sectores para generar un número específico de obstáculos (el más cercano en cada región). Una vez definidos estos obstáculos, son transformados en objetos de la clase `Agent`, contenida en el script `pyorca` para poder ser usados en la llamada al método que calcula la nueva velocidad. Como extra, los obstaculos son publicados como marcadores en el tópico `/visualization_marker` para permitir su visualización en Rviz.
+
+Además, interpreta la salida del orca para decidir si el robot se ha quedado atascado o no, para esto se hace uso de una variable llamada `stuck_count` que determinará que el robot debe replanificar la ruta al destino cuando el valor de esta variable exceda una cifra determinada. 
+Esta variable se incrementará cuando el script recibe una velocidad de avance positiva del tópico `/cmd_vel/tracker` y el script `pyorca` calcule que es necesaria una velocidad de retroceso para evitar los obstáculos cercanos, lo que significa que el camino en dirección al destino está bloqueado. Cuando esto ocurra, se publicará un flag en el tópico `/planner/stuck`, que será recibido por el nodo planificador para iniciar una replanificación del camino.
+Si la variable no ha alcanzado el limite establecido en un tiempo de 25 segundos, se reiniciará el valor de la variable para evitar una replanificación cuando no sea necesario.
+
+Este script se encargará además de asegurar que la velocidad publicada al robot no excede los límites establecidos en el servidor de parámetros y que no se realicen aceleraciones bruscas que puedan desconfigurar el sistema de referencia interno del robot.
 
 #### 4.1.7. Halfplaneintersect
 
