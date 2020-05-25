@@ -1,6 +1,16 @@
 # Challenge Robótica
 ## Tabla de Contenidos
 - [1. Introducción](#1introducci%C3%B3n)
+  * [1.1. Objetivos]
+  * [1.2. Materiales]
+- [2. Instrucciones de Ejecución]
+  * [2.1. Challenge 1](#21-challenge-1)
+  * [2.2. Challenge 2](#22-challenge-2)
+  * [2.3. Challenge 3](#23-challenge-3)
+  * [2.4. Challenge 4](#24-challenge-4)
+  * [2.5. Challenge 5](#25-challenge-5)
+- [3. Estructura]
+- [4. Componentes]
 
 ## 1.	Introducción
 ### 1.1. Objetivos
