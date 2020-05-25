@@ -140,7 +140,8 @@ Recibe diversos valores del servidor de parámetros que permiten ajustar el func
 #### 4.1.5. Pyorca
 Script que, basándose en el algoritmo *orca 2D* ([Optimal Reciprocal Collision Avoidance](http://gamma.cs.unc.edu/ORCA/)) descrito por J. van der Berg, adapta las velocidad lineal y angular exigidas por el script de control teniendo en cuenta las caracteristicas del robot y las lecturas del laser ya adaptadas desde el script de orcaGazebo, todo ello en forma de *'agentes'*, además de el tiempo estimado de colisión inminente. 
 #### 4.1.6. Orca gazebo
-Este script hace las veces de fachada entre el control y el pyorca, adaptando los datos e interpretando la adaptación calculada por el nodo de pyorca. En primer lugar, transforma la velocidad angular (medida en rad/s) a la velocidad que necesita el algoritmo de pyorca (componente de la velocidad lineal en el eje *y*) 
+Este script hace las veces de fachada entre el control y el pyorca, adaptando los datos e interpretando la adaptación calculada por el nodo de pyorca. En primer lugar, transforma la velocidad angular (medida en rad/s) a la velocidad que necesita el algoritmo de pyorca (componente de la velocidad lineal en el eje *y*). Posteriormente transformará a la inversa la velocidad lineal a la angular que recibe el robot. Además, interpreta la salida del orca para decidir si el robot se ha quedado atascado o no siguiendo la suigiente lógica:
+
 #### 4.1.7. Halfplaneintersect
 
 ### 4.2. Lanzadores
