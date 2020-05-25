@@ -4,15 +4,15 @@
 ## 3. Estructura
 ### 3.1. General
 A continuación, se puede observar las conexiones por tópicos que utilizan los nodos Ros lanzados durante la ejecución del programa.
-![Alt text](estructura_general.png?raw=true "Image 1")
+![Alt text](estructura_general.png?raw=true "Image 1")  
 
 ### 3.2. Nodo Planificador
 
 ### 3.3. Nodo Control
-En este nodo de ROS vamos a realizar el control del movimiento que debe realizar el robot para seguir el camino calculado por el planificador, así como un “suavizado” para que no pegue acelerones muy bruscos. El camino lo recibe del nodo planner a través del tópico ```/planner/path``` y publica el movimiento que debe realizar al tópico ```/cmd_vel/tracker```.
+En este nodo de ROS vamos a realizar el control del movimiento que debe realizar el robot para seguir el camino calculado por el planificador, así como un “suavizado” para que no pegue acelerones muy bruscos. El camino lo recibe del nodo planner a través del tópico ```/planner/path``` y publica el movimiento que debe realizar al tópico ```/cmd_vel/tracker```.  
 
 ### 3.4. Nodo Orca
-El nodo Orca tiene la responsabilidad de esquivar los obstáculos que no se hayan tenido en cuenta en el planificador de caminos porque no hayan sido mapeados. Recibe la velocidad a través del tópico ```/cmd_vel/tracker```, la transforma en función de las lecturas que reciba del laser del robot, y publica la velocidad en el tópico ```/cmd_vel_mux/input/navi```, donde será recibido por el robot para realizar el movimiento. Además, en caso de encontrarse en una situación que no pueda resolver para continuar el camino, publicará un booleano en en el tópico ```/planner/stuck```.
+El nodo Orca tiene la responsabilidad de esquivar los obstáculos que no se hayan tenido en cuenta en el planificador de caminos porque no hayan sido mapeados. Recibe la velocidad a través del tópico ```/cmd_vel/tracker```, la transforma en función de las lecturas que reciba del laser del robot, y publica la velocidad en el tópico ```/cmd_vel_mux/input/navi```, donde será recibido por el robot para realizar el movimiento. Además, en caso de encontrarse en una situación que no pueda resolver para continuar el camino, publicará un booleano en en el tópico ```/planner/stuck```.  
 
 ## 4. Componentes
 ### 4.1. Scripts
@@ -24,13 +24,13 @@ Este script se encarga de gestionar la planificación del camino óptimo para al
 -	Publicar un marcador para representar el camino calculado en Rviz.
 
 #### 4.1.2. AStar
-El algoritmo que utiliza el robot para encontrar el camino que debe seguir. A* es un algoritmo heurístico, es decir, que toma información acerca del propio entorno del problema (permitiéndole ignorar restricciones), que, en base a una función heurística, encuentra ruta más que aceptable hasta la meta. 
-El funcionamiento de A* es bastante simple. En primer lugar, partiendo de un punto, calcula todos los movimientos simples que puede realizar (en el caso del robot, se han tenido en cuenta los 4 ejes cardinales y movimientos diagonales con 45º de inclinación). A cada posible punto, le asocia un coste que será igual al coste acumulado de desplazarse a ese punto (todos los costes que lleva ya más el coste de la función heurística) y así sucesivamente.
-```C=f(nodo)+h(nodo)```
+El algoritmo que utiliza el robot para encontrar el camino que debe seguir. A* es un algoritmo heurístico, es decir, que toma información acerca del propio entorno del problema (permitiéndole ignorar restricciones), que, en base a una función heurística, encuentra ruta más que aceptable hasta la meta.  
+El funcionamiento de A* es bastante simple. En primer lugar, partiendo de un punto, calcula todos los movimientos simples que puede realizar (en el caso del robot, se han tenido en cuenta los 4 ejes cardinales y movimientos diagonales con 45º de inclinación). A cada posible punto, le asocia un coste que será igual al coste acumulado de desplazarse a ese punto (todos los costes que lleva ya más el coste de la función heurística) y así sucesivamente.  
+```C=f(nodo)+h(nodo)```  
 Donde C es el coste total del movimiento, f() es el coste acumulado y h() es el coste de la función heurística.
-Para este problema hemos decidido utilizar como función heurística la distancia euclídea desde el punto al que nos desplazaríamos y el punto objetivo.
-``h(nodo)= √((p.x-nodo.x)^2+(p.y-nodo.y)^2 )``
-Sin embargo, esta técnica por si sola y dados los movimientos del robot, devuelve una ruta, aunque corta, bastante lenta, puesto que solo puede moverse en 2 direcciones (hacia delante y hacia atrás) además de girar sobre su propio eje. Por ello hemos optado por aplicarle un “suavizado” en el momento de transformar la ruta para devolverla al planificador que consiste en que si realiza varios cambios de direcciones muy rápidamente, no los añada al camino, sino que salte ese escalado y vaya directamente del principio al final de la escalera. Además, el robot desacelera cuando se está acercando al punto que debe llegar, así que solo se envían los puntos de inicio y fin de una línea, sin puntos intermedios.
+Para este problema hemos decidido utilizar como función heurística la distancia euclídea desde el punto al que nos desplazaríamos y el punto objetivo.  
+``h(nodo)= √((p.x-nodo.x)^2+(p.y-nodo.y)^2 )``  
+Sin embargo, esta técnica por si sola y dados los movimientos del robot, devuelve una ruta, aunque corta, bastante lenta, puesto que solo puede moverse en 2 direcciones (hacia delante y hacia atrás) además de girar sobre su propio eje. Por ello hemos optado por aplicarle un “suavizado” en el momento de transformar la ruta para devolverla al planificador que consiste en que si realiza varios cambios de direcciones muy rápidamente, no los añada al camino, sino que salte ese escalado y vaya directamente del principio al final de la escalera. Además, el robot desacelera cuando se está acercando al punto que debe llegar, así que solo se envían los puntos de inicio y fin de una línea, sin puntos intermedios.  
 
 
 #### 4.1.3. Node
