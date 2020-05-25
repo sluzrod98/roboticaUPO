@@ -102,7 +102,7 @@ El nodo Orca tiene la responsabilidad de esquivar los obstáculos que no se haya
 
 ## 4. Componentes
 ### 4.1. Scripts
-#### 4.1.1. planner_node
+#### 4.1.1. Planner_node
 Este script se encarga de gestionar la planificación del camino óptimo para alcanzar la meta indicada desde la posición actual del robot utilizando el algoritmo A*. Este script realiza las siguientes funciones:
 -	Planificar la ruta óptima a la meta indicada cuando se reciba información del mapa de costes.
 -	Replanificar la ruta cuando el nodo orca detecte que el robot no puede seguir avanzando en la ruta actual debido a algún obstáculo no contenido en el mapa de costes al calcularla. Cuando esto ocurra, utilizará la información del mapa de costes dinámico para tener en cuenta los obstáculos detectados y generar una nueva ruta.
@@ -121,12 +121,14 @@ Sin embargo, esta técnica por si sola y dados los movimientos del robot, devuel
 #### 4.1.3. Node
 Clase nodo utilizada para controlar las posiciones y el coste de cada punto a contemplar en la solución del problema. Almacena las coordenadas x y del nodo, así como el nodo que le precede en el camino y su coste.  
 
-#### 4.1.4. control
+#### 4.1.4. Control
 Script que se encarga de comandar la velocidad lineal y angular que debe adquirir el robot en cada instante para alcanzar la siguiente meta del camino generado por el planificador.
 
-#### 4.1.5. pyorca
-#### 4.1.6. gazebo
-#### 4.1.7. halfplaneintersect
+#### 4.1.5. Pyorca
+Scrip que, basándose en el algoritmo de orca, adapta las velocidad lineal y angular exigidas por el script de control teniendo en cuenta las caracteristicas del robot y las lecturas del laser ya adaptadas desde el script de orcaGazebo, todo ello en forma de *'agentes'*. 
+#### 4.1.6. Orca gazebo
+
+#### 4.1.7. Halfplaneintersect
 
 ### 4.2. Lanzadores
 
