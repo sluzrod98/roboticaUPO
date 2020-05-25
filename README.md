@@ -1,4 +1,7 @@
 # Challenge Robótica
+## Tabla de Contenidos
+- [1. Introducción](#1. Introducción)
+
 ## 1.	Introducción
 ### 1.1. Objetivos
   - Crear un programa para controlar un robot (Turtlebot) en un escenario con obstáculos y alcanzar un destino siguiendo un camino.
