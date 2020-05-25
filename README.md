@@ -45,7 +45,7 @@ También se puede lanzar la simulación y el programa por separado usando en dos
 roslaunch robotics_challenge robotics_challenge1.launch  
 roslaunch challenge challenge1.launch
 ```
-### 2.1. Challenge 2
+### 2.2. Challenge 2
 Challenge 2 tal como se definió en el enunciado.
 Se deberá ejecutar en un terminal el siguiente comando:  
 `roslaunch robotics_challenge solution_robotics_challenge2.launch`  
@@ -151,4 +151,5 @@ Este script hace las veces de fachada entre el control y el pyorca, adaptando lo
 En el proyecto existen 3 lanzadores (1 por cada challenge planteado) cuya función es desplegar en ROS cada nodo. Los nodos que componen la solución son [Panner](#32-nodo-planificador), [Control](#33-nodo-control) y [Orca](#34-nodo-orca).
 
 ### 4.3. Ficheros de Configuración
+En los distintos ficheros de configuración se recogen todos los parámetros más importantes para el correcto funcionamiento de las solciones. A continuación se presenta una lista con los parámetros recogidos en cada lista, así como su funcionalidad durante la ejecución:
 
