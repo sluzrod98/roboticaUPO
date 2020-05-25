@@ -31,13 +31,13 @@ Para cada challenge se ofrecen dos formas de ejecutarlo
 ### 2.1. Challenge 1
 Challenge 1 tal como se definió en el enunciado.
 Se deberá ejecutar en un terminal el siguiente comando:  
-´roslaunch robotics_challenge solution_robotics_challenge1.launch`  
+`roslaunch robotics_challenge solution_robotics_challenge1.launch`
 También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
-´´´
+
+`
 roslaunch robotics_challenge robotics_challenge1.launch
 roslaunch challenge challenge1.launch
-```
-
+`
 ### 2.1. Challenge 2
 
 
