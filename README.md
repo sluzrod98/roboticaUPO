@@ -1,10 +1,29 @@
 # Challenge Robótica
 ## 1.	Introducción
+### 1.1. Objetivos
+  - Crear un programa para controlar un robot (Turtlebot) en un escenario con obstáculos y alcanzar un destino siguiendo un camino.
+  - Usar los sensores de distancia integrados en el robot para detectar obstáculos y comandar al robot hasta el destino siguiendo un camino.
+### 1.2. Materiales
+  
+## 2. Instrucciones de Ejecución
+### 2.1. Challenge 1
+
+### 2.1. Challenge 2
+
+### 2.3. Challenge 3
+
+### 2.4. Challenge 4
+
+### 2.5. Challenge 5
+
 
 ## 3. Estructura
 ### 3.1. General
 A continuación, se puede observar las conexiones por tópicos que utilizan los nodos Ros lanzados durante la ejecución del programa.
-![Alt text](estructura_general.png?raw=true "Image 1")  
+![Alt text](estructura_general.png?raw=true "Estructura General")  
+
+Las relaciones entre los nodos creados para nuestro programa son las mostradas a continuación.  
+![Alt text](estructura_especifica.png?raw=true "Estructura Específica") 
 
 ### 3.2. Nodo Planificador
 
@@ -32,9 +51,16 @@ Para este problema hemos decidido utilizar como función heurística la distanci
 ``h(nodo)= √((p.x-nodo.x)^2+(p.y-nodo.y)^2 )``  
 Sin embargo, esta técnica por si sola y dados los movimientos del robot, devuelve una ruta, aunque corta, bastante lenta, puesto que solo puede moverse en 2 direcciones (hacia delante y hacia atrás) además de girar sobre su propio eje. Por ello hemos optado por aplicarle un “suavizado” en el momento de transformar la ruta para devolverla al planificador que consiste en que si realiza varios cambios de direcciones muy rápidamente, no los añada al camino, sino que salte ese escalado y vaya directamente del principio al final de la escalera. Además, el robot desacelera cuando se está acercando al punto que debe llegar, así que solo se envían los puntos de inicio y fin de una línea, sin puntos intermedios.  
 
-
 #### 4.1.3. Node
+Clase nodo utilizada para controlar las posiciones y el coste de cada punto a contemplar en la solución del problema. Almacena las coordenadas x y del nodo, así como el nodo que le precede en el camino y su coste.  
+
 #### 4.1.4. control
+Script que se encarga de comandar la velocidad lineal y angular que debe adquirir el robot en cada instante para alcanzar la siguiente meta del camino generado por el planificador.  
+
 #### 4.1.5. pyorca
 #### 4.1.6. gazebo
 #### 4.1.7. halfplaneintersect
+
+### 4.2. Lanzadores
+
+### 4.3. Ficheros de Configuración
