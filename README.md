@@ -23,7 +23,14 @@
 ### 1.1. Objetivos
   - Crear un programa para controlar un robot (Turtlebot) en un escenario con obstáculos y alcanzar un destino siguiendo un camino.
   - Usar los sensores de distancia integrados en el robot para detectar obstáculos y comandar al robot hasta el destino siguiendo un camino.
+  - Usar los sensores de distancia integrados en el robot para detectar los obstáculos en el mapa y registrarlos en un mapa de costes local dinámico, que se usará para replanificar el camino si este ha sido bloqueado por un obstáculo y comandar al robot hasta el destino.
 ### 1.2. Materiales
+Se usarán las siguientes herramientas para la implementación del programa y la realización del challenge:
+  * El motor de simulación 3D Gazebo.
+  * La herramienta de visualización Rviz.
+  * Un sensor de distancia simulado por Gazebo para detectar obstáculos.
+  * Planificación y re-planificación de caminos usando la API ros::Costmap2D
+  * Datos y código obtenido de anteriores EPDs.
   
 ## 2. Instrucciones de Ejecución
 Hemos optado por usar dos paquetes de ros distintos para mantener separado el código que carga el mapa del código que mueve al robot.  
