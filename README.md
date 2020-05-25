@@ -85,9 +85,11 @@ roslaunch challenge challenge3.launch
 ## 3. Estructura
 ### 3.1. General
 A continuación, se puede observar las conexiones por tópicos que utilizan los nodos Ros lanzados durante la ejecución del programa.
+
 ![Alt text](estructura_general.png?raw=true "Estructura General")  
 
-Las relaciones entre los nodos creados para nuestro programa son las mostradas a continuación.  
+Las relaciones entre los nodos creados para nuestro programa son las mostradas a continuación. 
+
 ![Alt text](estructura_especifica.png?raw=true "Estructura Específica") 
 
 ### 3.2. Nodo Planificador
