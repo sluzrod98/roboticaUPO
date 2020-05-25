@@ -33,7 +33,7 @@ Challenge 1 tal como se definió en el enunciado.
 Se deberá ejecutar en un terminal el siguiente comando:  
 `roslaunch robotics_challenge solution_robotics_challenge1.launch`  
 
-También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:  
 `
 roslaunch robotics_challenge robotics_challenge1.launch  
 roslaunch challenge challenge1.launch
@@ -43,7 +43,7 @@ Challenge 2 tal como se definió en el enunciado.
 Se deberá ejecutar en un terminal el siguiente comando:  
 `roslaunch robotics_challenge solution_robotics_challenge2.launch`  
 
-También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:  
 `
 roslaunch robotics_challenge robotics_challenge2.launch  
 roslaunch challenge challenge2.launch
@@ -54,7 +54,7 @@ Challenge 3 tal como se definió en el enunciado.
 Se deberá ejecutar en un terminal el siguiente comando:  
 `roslaunch robotics_challenge solution_robotics_challenge3.launch`  
 
-También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:  
 `
 roslaunch robotics_challenge robotics_challenge3.launch  
 roslaunch challenge challenge3.launch
@@ -65,7 +65,7 @@ Modificación del challenge 2 que añade una estantería en el recorrido al dest
 Se deberá ejecutar en un terminal el siguiente comando:  
 `roslaunch robotics_challenge solution_robotics_challenge4.launch`  
 
-También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:  
 `
 roslaunch robotics_challenge robotics_challenge4.launch  
 roslaunch challenge challenge2.launch
@@ -76,7 +76,7 @@ Modificación del challenge 3 que añade una caja y un cilindro en el recorrido 
 Se deberá ejecutar en un terminal el siguiente comando:  
 `roslaunch robotics_challenge solution_robotics_challenge5.launch`  
 
-También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:  
 `
 roslaunch robotics_challenge robotics_challenge5.launch  
 roslaunch challenge challenge3.launch
