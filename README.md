@@ -125,9 +125,9 @@ Clase nodo utilizada para controlar las posiciones y el coste de cada punto a co
 Script que se encarga de comandar la velocidad lineal y angular que debe adquirir el robot en cada instante para alcanzar la siguiente meta del camino generado por el planificador.
 
 #### 4.1.5. Pyorca
-Scrip que, basándose en el algoritmo de orca, adapta las velocidad lineal y angular exigidas por el script de control teniendo en cuenta las caracteristicas del robot y las lecturas del laser ya adaptadas desde el script de orcaGazebo, todo ello en forma de *'agentes'*. 
+Script que, basándose en el algoritmo *orca 2D* (Optimal Reciprocal Collision Avoidance <http://gamma.cs.unc.edu/ORCA/>) descrito por J. van der Berg, adapta las velocidad lineal y angular exigidas por el script de control teniendo en cuenta las caracteristicas del robot y las lecturas del laser ya adaptadas desde el script de orcaGazebo, todo ello en forma de *'agentes'*, además de el tiempo estimado de colisión inminente. 
 #### 4.1.6. Orca gazebo
-
+Este script hace las veces de fachada entre el control y el pyorca, adaptando los datos e interpretando la adaptación calculada por el nodo de pyorca. En primer lugar, transforma la velocidad angular (medida en rad/s) a la velocidad que necesita el algoritmo de pyorca (componente de la velocidad lineal en el eje *y*) 
 #### 4.1.7. Halfplaneintersect
 
 ### 4.2. Lanzadores
