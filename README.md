@@ -3,18 +3,21 @@
 - [1. Introducción](#1introducción)
   * [1.1. Objetivos](#11-objetivos)
   * [1.2. Materiales](#12-materiales)
-- [2. Instrucciones de Ejecución]
+- [2. Instrucciones de Ejecución](#2-instrucciones-de-ejecución)
   * [2.1. Challenge 1](#21-challenge-1)
   * [2.2. Challenge 2](#22-challenge-2)
   * [2.3. Challenge 3](#23-challenge-3)
   * [2.4. Challenge 4](#24-challenge-4)
   * [2.5. Challenge 5](#25-challenge-5)
-- [3. Estructura]
+- [3. Estructura](#3-estructura)
   * [3.1. General](#31-general)
   * [3.2. Nodo Planificador](#32-nodo-planificador)
   * [3.3. Nodo Control](#33-nodo-control)
   * [3.4. Nodo Orca](#34-nodo-orca)
-- [4. Componentes](#4componentes)
+- [4. Componentes](#4-componentes)
+  * [4.1. Scripts](#41-scripts)
+  * [4.2. Lanzadores](#42-lanzadores)
+  * [4.3. Ficheros de Configuración](#43-ficheros-de-configuración)
 
 ## 1.	Introducción
 ### 1.1. Objetivos
