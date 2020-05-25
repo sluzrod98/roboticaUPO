@@ -119,8 +119,11 @@ Este script se encarga de gestionar la planificación del camino óptimo para al
 #### 4.1.2. AStar
 El algoritmo que utiliza el robot para encontrar el camino que debe seguir. A* es un algoritmo heurístico, es decir, que toma información acerca del propio entorno del problema (permitiéndole ignorar restricciones), que, en base a una función heurística, encuentra ruta más que aceptable hasta la meta.  
 El funcionamiento de A* es bastante simple. En primer lugar, partiendo de un punto, calcula todos los movimientos simples que puede realizar (en el caso del robot, se han tenido en cuenta los 4 ejes cardinales y movimientos diagonales con 45º de inclinación). A cada posible punto, le asocia un coste que será igual al coste acumulado de desplazarse a ese punto (todos los costes que lleva ya más el coste de la función heurística) y así sucesivamente.  
-```C=f(nodo)+h(nodo)```  
-Donde C es el coste total del movimiento, f() es el coste acumulado y h() es el coste de la función heurística.
+
+![Alt text](img/A*_formula.svg?raw=true "Estructura Específica") 
+
+Donde *f(x)* es el coste total del movimiento, *g(x)* es el coste acumulado para alcanzar ese punto y *h(x)* es el coste de la función heurística.
+
 Para este problema hemos decidido utilizar como función heurística la distancia euclídea desde el punto al que nos desplazaríamos y el punto objetivo.  
 
 ![Alt text](img/Manhattan.svg?raw=true "Estructura Específica") 
