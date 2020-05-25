@@ -1,0 +1,14 @@
+### General parameters ###
+
+# Threshold angle at which the robot rotates without moving
+ang_threshold: 0.7
+# Distance the robot must be to a goal to consider it has reached it
+goal_tolerance: 0.2
+# Maximum linear speed allowed
+linear_max: 0.5
+# Parameter to control robot linear speed
+speed_parameter: 0.75
+# Maximum angular speed allowed
+angular_max: 0.5
+# Parameter to control robot angular speed
+angular_parameter: 0.5

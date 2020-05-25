@@ -1,0 +1,13 @@
+<launch>
+	<node name="planner" pkg="challenge" type="planner_node.py" output="screen">
+    	<rosparam command="load" file="$(find challenge)/cfg/challenge3.yaml" />
+  	</node>
+	<node pkg="challenge" type="control.py" name="control" output="screen">
+		<!-- <remap from="/cmd_vel/tracker" to="cmd_vel_mux/input/navi"/> -->
+		<rosparam command="load" file="$(find challenge)/cfg/globalParams.yaml"/>
+	</node>
+
+	 <node pkg="challenge" type="orcaGazebo.py" name="orca" output="screen">
+		<rosparam command="load" file="$(find challenge)/cfg/orcaParams.yaml"/>
+	</node>
+</launch>

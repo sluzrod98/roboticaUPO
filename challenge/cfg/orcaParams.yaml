@@ -1,0 +1,16 @@
+### Orca parameters ###
+
+# Robot radius
+radius: 0.33
+# Number of sections taken with the scanner
+sections: 4
+# Distance at which the robot acknowledges obstacles in its field of vision
+obstacle_distance: 2
+# Maximum linear speed
+linear_max: 0.5
+# Maximum angular speed
+angular_max: 0.5
+# Parameter used to smooth the speed when accelerating
+smooth_param: 0.2
+# Frecuency at which the robot operates (Hz)
+frecuency: 10

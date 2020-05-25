@@ -1,0 +1,8 @@
+init:
+    x: 0
+    y: 0
+goal:
+    x: 2
+    y: 4.85
+# Threshold at which a costmap value is considered an obstacle
+obstacle_threshold: 92
