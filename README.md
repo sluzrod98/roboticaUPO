@@ -146,7 +146,7 @@ Para este problema hemos decidido utilizar como función heurística la distanci
 Sin embargo, esta técnica por si sola y dados los movimientos del robot, devuelve una ruta, aunque corta, bastante lenta, puesto que solo puede moverse en 2 direcciones (hacia delante y hacia atrás) además de girar sobre su propio eje. Por ello hemos optado por aplicarle un “suavizado” en el momento de transformar la ruta para devolverla al planificador que consiste en que si realiza varios cambios de direcciones muy rápidamente, no los añada al camino, sino que salte ese escalado y vaya directamente del principio al final de la escalera. Además, el robot desacelera cuando se está acercando al punto que debe llegar, así que solo se envían los puntos de inicio y fin de una línea, sin puntos intermedios.  
 
 #### 4.1.3. Node
-Clase nodo utilizada para controlar las posiciones y el coste de cada punto a contemplar en la solución del problema. Almacena las coordenadas x y del nodo, así como el nodo que le precede en el camino y su coste.  
+Clase nodo utilizada para controlar las posiciones y el coste de cada punto a contemplar en la solución del problema. Almacena las coordenadas *(x,y)* del nodo, así como el nodo que le precede en el camino y su coste.  
 
 #### 4.1.4. Control
 Script que se encarga de calcular la velocidad lineal y angular que debe adquirir el robot en cada instante para alcanzar la siguiente meta del camino generado por el planificador (sin tener en cuenta obstáculos en el camino) y detectar cuándo se ha llegado a esa meta, dada una distancia límite. Una vez calculadas estas velocidades usando la orientación del robot y su distancia al destino, el script publica un tópico con los datos de velocidad, de los que hará uso el script `orcaGazebo` para implementar la evasión de obstaculos.  
@@ -156,7 +156,7 @@ El script comenzará su funcionamiento cuando reciba un camino generado por el p
 Recibe diversos valores del servidor de parámetros que permiten ajustar el funcionamiento del script para adaptarse a nuevos escenarios si fuera necesario.
 
 #### 4.1.5. Pyorca
-Script que, basándose en el algoritmo *ORCA 2D* ([Optimal Reciprocal Collision Avoidance](http://gamma.cs.unc.edu/ORCA/)) descrito por J. van der Berg, adapta las velocidad lineal y angular exigidas por el script de control teniendo en cuenta las caracteristicas del robot y las lecturas del laser ya adaptadas desde el script de orcaGazebo, todo ello en forma de *'agentes'*, además de el tiempo estimado de colisión inminente. 
+Script que, basándose en el algoritmo *ORCA 2D* ([Optimal Reciprocal Collision Avoidance](http://gamma.cs.unc.edu/ORCA/)) descrito por J. van der Berg, adapta las velocidad lineal y angular exigidas por el script de control teniendo en cuenta las caracteristicas del robot y las lecturas del laser ya adaptadas desde el script de orcaGazebo, todo ello en forma de `Agent`, además de el tiempo estimado de colisión inminente. 
 
 #### 4.1.6. Orca gazebo
 Este script hace las veces de fachada entre el control y el pyorca, adaptando los datos e interpretando la adaptación calculada por el nodo de pyorca. En primer lugar, transforma la velocidad angular (medida en rad/s) a la velocidad que necesita el algoritmo de pyorca (componente de la velocidad lineal en el eje *y*). Posteriormente transformará a la inversa la velocidad lineal a la angular que recibe el robot. 
