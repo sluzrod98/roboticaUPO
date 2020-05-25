@@ -123,9 +123,9 @@ Clase nodo utilizada para controlar las posiciones y el coste de cada punto a co
 
 #### 4.1.4. control
 Script que se encarga de comandar la velocidad lineal y angular que debe adquirir el robot en cada instante para alcanzar la siguiente meta del camino generado por el planificador.  
+Hola.
 
 #### 4.1.5. pyorca
-dshfjisadhf
 #### 4.1.6. gazebo
 #### 4.1.7. halfplaneintersect
 
