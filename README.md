@@ -89,6 +89,7 @@ roslaunch robotics_challenge robotics_challenge5.launch
 roslaunch challenge challenge3.launch
 ```
 
+
 ## 3. Estructura
 ### 3.1. General
 A continuación, se puede observar las conexiones por tópicos que utilizan los nodos Ros lanzados durante la ejecución del programa.
@@ -100,12 +101,16 @@ Las relaciones entre los nodos creados para nuestro programa son las mostradas a
 ![Alt text](img/estructura_especifica.png?raw=true "Estructura Específica") 
 
 ### 3.2. Nodo Planificador
+Nodo ROS encargado de recibir los datos del mapa de costes del nodo `costmap_2d` a través del tópico `/costmap_2d/costmap/costmap`, calcular el camino óptimo hasta el destino especificado y publicar ese camino al nodo `control` a través del tópico `path`. Recibe también del nodo `orca`, a través del tópico `/planner/stuck`, un flag que indica que el robot ha qudado atascado y debe realizarse una replanificación del camino.  
+
+Además de su funcionalidad principal, el nodo publica un marcador con el camino calculado al tópico `/planner/path_marker` que puede ser visualizado desde Rviz (pre-configurado).
 
 ### 3.3. Nodo Control
-En este nodo de ROS vamos a realizar el control del movimiento que debe realizar el robot para seguir el camino calculado por el planificador, así como un “suavizado” para que no pegue acelerones muy bruscos. El camino lo recibe del nodo planner a través del tópico ```/planner/path``` y publica el movimiento que debe realizar al tópico ```/cmd_vel/tracker```.  
+En este nodo de ROS se calculará el movimiento que debe realizar el robot para seguir el camino calculado por el planificador. El camino lo recibe del nodo `planner` a través del tópico `/planner/path` y publica el movimiento que debe realizar al tópico `/cmd_vel/tracker`, del que hará uso en nodo `orca`.  
 
 ### 3.4. Nodo Orca
-El nodo Orca tiene la responsabilidad de esquivar los obstáculos que no se hayan tenido en cuenta en el planificador de caminos porque no hayan sido mapeados. Recibe la velocidad a través del tópico ```/cmd_vel/tracker```, la transforma en función de las lecturas que reciba del laser del robot, y publica la velocidad en el tópico ```/cmd_vel_mux/input/navi```, donde será recibido por el robot para realizar el movimiento. Además, en caso de encontrarse en una situación que no pueda resolver para continuar el camino, publicará un booleano en en el tópico ```/planner/stuck```.  
+El nodo Orca tiene la responsabilidad modificar la velocidad recibida del nodo `control` para evitar los obstáculos que no se hayan tenido en cuenta en el planificador de caminos porque no han sido registrados en el mapa anteriormente. Recibe la velocidad a través del tópico `/cmd_vel/tracker`, la transforma en función de las lecturas que reciba del laser del robot, y publica la velocidad al nodo `/mobile_base_nodelet_manager` en el tópico `/cmd_vel_mux/input/navi`, donde será recibido por el robot para realizar el movimiento. Además, en caso de encontrarse en una situación que no pueda resolver para continuar el camino, publicará un booleano a modo de flag al nodo `planner` en en el tópico `/planner/stuck`.  
+
 
 ## 4. Componentes
 ### 4.1. Scripts
@@ -141,7 +146,8 @@ El script comenzará su funcionamiento cuando reciba un camino generado por el p
 Recibe diversos valores del servidor de parámetros que permiten ajustar el funcionamiento del script para adaptarse a nuevos escenarios si fuera necesario.
 
 #### 4.1.5. Pyorca
-Script que, basándose en el algoritmo *orca 2D* ([Optimal Reciprocal Collision Avoidance](http://gamma.cs.unc.edu/ORCA/)) descrito por J. van der Berg, adapta las velocidad lineal y angular exigidas por el script de control teniendo en cuenta las caracteristicas del robot y las lecturas del laser ya adaptadas desde el script de orcaGazebo, todo ello en forma de *'agentes'*, además de el tiempo estimado de colisión inminente. 
+Script que, basándose en el algoritmo *ORCA 2D* ([Optimal Reciprocal Collision Avoidance](http://gamma.cs.unc.edu/ORCA/)) descrito por J. van der Berg, adapta las velocidad lineal y angular exigidas por el script de control teniendo en cuenta las caracteristicas del robot y las lecturas del laser ya adaptadas desde el script de orcaGazebo, todo ello en forma de *'agentes'*, además de el tiempo estimado de colisión inminente. 
+
 #### 4.1.6. Orca gazebo
 Este script hace las veces de fachada entre el control y el pyorca, adaptando los datos e interpretando la adaptación calculada por el nodo de pyorca. En primer lugar, transforma la velocidad angular (medida en rad/s) a la velocidad que necesita el algoritmo de pyorca (componente de la velocidad lineal en el eje *y*). Posteriormente transformará a la inversa la velocidad lineal a la angular que recibe el robot. 
 
@@ -154,6 +160,7 @@ Si la variable no ha alcanzado el limite establecido en un tiempo de 25 segundos
 Este script se encargará además de asegurar que la velocidad publicada al robot no excede los límites establecidos en el servidor de parámetros y que no se realicen aceleraciones bruscas que puedan desconfigurar el sistema de referencia interno del robot.
 
 #### 4.1.7. Halfplaneintersect
+Script usado por `pyorca` para calcular las trayectorias y velocidades futuras de todos los obstáculos proporcionados al script y calcular así las nuevas velocidades necesarias para cada agente de tal forma que se evite una colisión. En nuestro caso, solo el agente del robot es capaz de moverse y todos los obstáculos se consideran estáticos, por lo que solo se calculará la nueva velocidad para el robot.
 
 ### 4.2. Lanzadores
 En el proyecto existen 3 lanzadores (1 por cada challenge planteado) cuya función es desplegar en ROS cada nodo. Los nodos que componen la solución son [Planner](#32-nodo-planificador), [Control](#33-nodo-control) y [Orca](#34-nodo-orca).
