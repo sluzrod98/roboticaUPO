@@ -27,28 +27,60 @@
   
 ## 2. Instrucciones de Ejecución
 Hemos optado por usar dos paquetes de ros distintos para mantener separado el código que carga el mapa del código que mueve al robot.  
-Para cada challenge se ofrecen dos formas de ejecutarlo
+Para cada challenge se proporcionan dos formas de ejecutarlo.
 ### 2.1. Challenge 1
 Challenge 1 tal como se definió en el enunciado.
 Se deberá ejecutar en un terminal el siguiente comando:  
-`roslaunch robotics_challenge solution_robotics_challenge1.launch`
-También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+`roslaunch robotics_challenge solution_robotics_challenge1.launch`  
 
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
 `
-roslaunch robotics_challenge robotics_challenge1.launch
+roslaunch robotics_challenge robotics_challenge1.launch  
 roslaunch challenge challenge1.launch
 `
 ### 2.1. Challenge 2
+Challenge 2 tal como se definió en el enunciado.
+Se deberá ejecutar en un terminal el siguiente comando:  
+`roslaunch robotics_challenge solution_robotics_challenge2.launch`  
 
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+`
+roslaunch robotics_challenge robotics_challenge2.launch  
+roslaunch challenge challenge2.launch
+`
 
 ### 2.3. Challenge 3
+Challenge 3 tal como se definió en el enunciado.
+Se deberá ejecutar en un terminal el siguiente comando:  
+`roslaunch robotics_challenge solution_robotics_challenge3.launch`  
 
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+`
+roslaunch robotics_challenge robotics_challenge3.launch  
+roslaunch challenge challenge3.launch
+`
 
 ### 2.4. Challenge 4
+Modificación del challenge 2 que añade una estantería en el recorrido al destino, no visible para el robot al comienzo de la simulación y obliga al robot a replanificar la ruta.
+Se deberá ejecutar en un terminal el siguiente comando:  
+`roslaunch robotics_challenge solution_robotics_challenge4.launch`  
 
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+`
+roslaunch robotics_challenge robotics_challenge4.launch  
+roslaunch challenge challenge2.launch
+`
 
 ### 2.5. Challenge 5
+Modificación del challenge 3 que añade una caja y un cilindro en el recorrido al destino, no visible para el robot al comienzo de la simulación y que obliga al robot a replanificar la ruta en varias ocasiones.
+Se deberá ejecutar en un terminal el siguiente comando:  
+`roslaunch robotics_challenge solution_robotics_challenge5.launch`  
 
+También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:
+`
+roslaunch robotics_challenge robotics_challenge5.launch  
+roslaunch challenge challenge3.launch
+`
 
 ## 3. Estructura
 ### 3.1. General
