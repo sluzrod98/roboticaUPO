@@ -9,11 +9,7 @@
   * [1.1. Objetivos](#11-objetivos)
   * [1.2. Materiales](#12-materiales)
 - [2. Instrucciones de Ejecución](#2-instrucciones-de-ejecución)
-  * [2.1. Challenge 1](#21-challenge-1)
-  * [2.2. Challenge 2](#22-challenge-2)
-  * [2.3. Challenge 3](#23-challenge-3)
-  * [2.4. Challenge 4](#24-challenge-4)
-  * [2.5. Challenge 5](#25-challenge-5)
+  * [2.1. Prerrequisitos](#21-Prerrequisitos)
 - [3. Estructura](#3-estructura)
   * [3.1. General](#31-general)
   * [3.2. Nodo Planificador](#32-nodo-planificador)
@@ -40,17 +36,15 @@ Se usarán las siguientes herramientas para la implementación del programa y la
 ## 2. Instrucciones de Ejecución
 Hemos optado por usar dos paquetes de ros distintos para mantener separado el código que carga el mapa del código que mueve al robot.  
 Para cada challenge se proporcionan dos formas de ejecutarlo.
-### 2.1. Challenge 1
-Challenge 1 tal como se definió en el enunciado.  
-Se deberá ejecutar en un terminal el siguiente comando:  
-```
-roslaunch robotics_challenge solution_robotics_challenge1.launch
-```  
+### 2.1. Prerrequisitos
+La librería OpenCV de por si, contiene una gran variedad de algoritmos especializados en trackear objetos entre los que se encuentra CSRT (Channel and Spatial Reliability Tracker), que solo está disponible a partir de su versión 3.4.2. La distribución de ROS Kinectic no permite utilizar una versión posterior a la 3.3.0-deb, por lo que hemos optado por utilizar la distribución Melodic.
 
-También se puede lanzar la simulación y el programa por separado usando en dos terminales distintas los siguientes comandos:  
+Los algoritmos de tracker aportados por opencv se encuentran en el paquete "contrib", no en el base. Para actualizar la versión, es necesario desinstalar primero opencv para después instalarlo en su versión contrib.
+
 ```
-roslaunch robotics_challenge robotics_challenge1.launch  
-roslaunch challenge challenge1.launch
+sudo pip uninstall opencv-python
+sudo pip uninstall opencv-contrib-python
+pip install opencv-contrib-python
 ```
 ### 2.2. Challenge 2
 Challenge 2 tal como se definió en el enunciado.  
