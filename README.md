@@ -46,6 +46,15 @@ sudo pip uninstall opencv-python
 sudo pip uninstall opencv-contrib-python
 pip install opencv-contrib-python
 ```
+
+Finalmente, para comprobar que se ha actualizado correctamente, desde una terminal de python podemos comprobar la versión instalada
+
+```
+>>import cv2
+>>cv2.__version__
+'4.2.0'
+>> |
+```
 ### 2.2. Challenge 2
 Challenge 2 tal como se definió en el enunciado.  
 Se deberá ejecutar en un terminal el siguiente comando:  
